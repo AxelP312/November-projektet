@@ -16,7 +16,6 @@ namespace NovemberProjekt
             Raylib.DrawRectangle(200, 50,  100, 50, Color.GREEN);
             Raylib.DrawRectangle(350, 50,  100, 50, Color.GREEN);
             Raylib.DrawRectangle(500, 50,  100, 50, Color.GREEN);
-            
             Raylib.DrawRectangle(0, 750,  650, 50, Color.GREEN);
 
             //vägen
@@ -24,6 +23,8 @@ namespace NovemberProjekt
             Raylib.DrawRectangle(0, 400,  650, 50, Color.PURPLE);
             Raylib.DrawRectangle(0, 700,  650, 50, Color.PURPLE);
             //-----> Kartan
+
+            //Sök om det går att effektivisera 
         }
     }
 }

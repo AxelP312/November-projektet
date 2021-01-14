@@ -3,74 +3,84 @@ using Raylib_cs;
 
 namespace NovemberProjekt
 {
-    public class Player
+    public class Player 
     {
-
-        public Rectangle rect = new Rectangle();
+        //skapar en rektangel
+        public Rectangle playerModel = new Rectangle();
+        
+        //tangentbordskontroller 
         public KeyboardKey upKey;
         public KeyboardKey downKey;
         public KeyboardKey leftKey;
         public KeyboardKey rightKey;
 
+        //Skapar rektangeln med plats och kontroller
         public Player(float x, float y, KeyboardKey upKey, KeyboardKey downKey, KeyboardKey leftKey, KeyboardKey rightKey)
         {
-            this.rect.x = x;
-            this.rect.y = y;
-            this.rect.height = 50;
-            this.rect.width = 50;
+            //Kordinaterna som instansen skapas på
+            this.playerModel.x = x;
+            this.playerModel.y = y;
 
+            //höjd och bredd av instansen
+            this.playerModel.height = 50;
+            this.playerModel.width = 50;
+
+            //väljer tangenter som styr
             this.upKey = upKey;
             this.downKey = downKey;
             this.rightKey = rightKey;
             this.leftKey = leftKey;
         }
 
+        //ritar ut spelaren
         public void Draw()
         {
-            Raylib.DrawRectangleRec(this.rect, Color.BLACK);
+            Raylib.DrawRectangleRec(this.playerModel, Color.BLACK);
         }
 
+        //GÖR EN METOD FÖR DE TVÅ
         public void Update()
         {
+            //De 4 if-satserna kollar om man klickar på en tangent
+            //och beroende på vilken "hoppar" spelaren, spelaren rör på sig
             if (Raylib.IsKeyPressed(upKey))
             {
-                this.rect.y -= 50f;
+                this.playerModel.y -= 50f;
             }
             else if (Raylib.IsKeyPressed(downKey))
             {
-                this.rect.y += 50f;
+                this.playerModel.y += 50f;
             }
             else if (Raylib.IsKeyPressed(leftKey))
             {
-                this.rect.x -= 50f;
+                this.playerModel.x -= 50f;
             }
             else if (Raylib.IsKeyPressed(rightKey))
             {
-                this.rect.x += 50f;
+                this.playerModel.x += 50f;
             }
 
-            if (rect.y > 800 - rect.height)
+            //Kollar att spelaen inte går utanför banan
+            //Om spelaren gör det teleporteras den in i banan igen
+            if (playerModel.y > 800 - playerModel.height)
             {
-                this.rect.y = 800 - rect.height;
+                this.playerModel.y = 800 - playerModel.height;
             }
 
-            if (rect.y < 0)
+            if (playerModel.y < 0)
             {
-                this.rect.y = 0f;
+                this.playerModel.y = 0f;
             }
 
-            if (rect.x < 0)
+            if (playerModel.x < 0)
             {
-                this.rect.x = 0f;
+                this.playerModel.x = 0f;
             }
 
-            if (rect.x > 650 - rect.width)
+            if (playerModel.x > 650 - playerModel.width)
             {
-                this.rect.x = 650 - rect.width;
+                this.playerModel.x = 650 - playerModel.width;
             }
-
-
-
         }
     }
 }
